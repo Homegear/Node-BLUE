@@ -1,4 +1,14 @@
 /**
+ * This file was modified by Homegear GmbH
+ *
+ * Changes:
+ * - Include HomegearWS
+ * - Don't delete public/icons on clean
+ * - Copy node icons to public/icons
+ * - Copy translation files
+ **/
+
+/**
  * Copyright JS Foundation and other contributors, http://js.foundation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -207,6 +217,7 @@ module.exports = function(grunt) {
                         "node_modules/marked/marked.min.js",
                         "node_modules/dompurify/dist/purify.min.js",
                         "packages/node_modules/@node-red/editor-client/src/vendor/d3/d3.v3.min.js",
+                        "packages/node_modules/@node-red/editor-client/src/vendor/homegear-ws/homegear-ws.js",
                         "packages/node_modules/@node-red/editor-client/src/vendor/i18next/i18next.min.js",
                         "node_modules/jsonata/jsonata-es5.min.js",
                         "packages/node_modules/@node-red/editor-client/src/vendor/jsonata/formatter.js",
@@ -279,7 +290,7 @@ module.exports = function(grunt) {
                     "packages/node_modules/@node-red/editor-client/public/red",
                     "packages/node_modules/@node-red/editor-client/public/index.html",
                     "packages/node_modules/@node-red/editor-client/public/favicon.ico",
-                    "packages/node_modules/@node-red/editor-client/public/icons",
+                    //"packages/node_modules/@node-red/editor-client/public/icons",
                     "packages/node_modules/@node-red/editor-client/public/vendor"
                 ]
             },
@@ -366,6 +377,12 @@ module.exports = function(grunt) {
                         dest: 'packages/node_modules/@node-red/editor-client/public/red/images/'
                     },
                     {
+                        cwd: 'packages/node_modules/@node-red/nodes/icons',
+                        src: '**',
+                        expand: true,
+                        dest: 'packages/node_modules/@node-red/editor-client/public/icons/'
+                    },
+                    {
                         cwd: 'packages/node_modules/@node-red/editor-client/src/vendor',
                         src: [
                             'ace/**',
@@ -400,6 +417,54 @@ module.exports = function(grunt) {
                         src: '**',
                         expand: true,
                         dest: 'packages/node_modules/@node-red/editor-client/public/vendor/ace/'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/en-US/editor.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/en-US/editor'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/en-US/editor-extra.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/en-US/editor-extra'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/en-US/infotips.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/en-US/infotips'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/en-US/jsonata.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/en-US/jsonata'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/en-US/node-red.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/en-US/node-red'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/en-US/signin.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/en-US/signin'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/de/editor.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/de/editor'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/de/editor-extra.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/de/editor-extra'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/de/infotips.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/de/infotips'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/de/jsonata.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/de/jsonata'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/de/node-red.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/de/node-red'
+                    },
+                    {
+                        src: 'packages/node_modules/@node-red/editor-client/locales/de/signin.json',
+                        dest: 'packages/node_modules/@node-red/editor-client/public/static/locales/de/signin'
                     }
                 ]
             }
